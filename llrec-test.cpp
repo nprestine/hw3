@@ -2,6 +2,7 @@
 #include <fstream>
 #include <functional>
 #include "llrec.h"
+
 using namespace std;
 
 /**
@@ -66,8 +67,12 @@ void dealloc(Node* head)
 //   Add any helper functions or
 //   function object struct declarations
 // -----------------------------------------------
-
-
+ struct funct{ //struct to mimic filter condition
+        bool operator() (int x){
+            if((x+1)%2 ==1) return true;
+            else return false;
+        }
+    };
 
 
 
@@ -86,10 +91,28 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
-
-
-
-    
+    Node* smaller;
+    Node* larger;
+    smaller = nullptr;
+    larger = nullptr;
+    llpivot(head, smaller, larger, 8); //test pivot
+    cout<< "smaller:";
+    print(smaller);
+    cout <<"larger:";
+    print(larger);
+    cout << endl;
+    dealloc(smaller);
+    dealloc(larger);
+    Node* head2 = readList(argv[1]);
+    cout << "Input list: ";
+    print(head2);
+    head2 = llfilter(head2,funct()); //test filter
+    cout<< "<<list filtered to exclude even numbers>>" << endl;
+    cout <<"Filtered list: ";
+    print(head2);
+    dealloc(head2);
+    cout << endl;
     return 0;
 
+   
 }
