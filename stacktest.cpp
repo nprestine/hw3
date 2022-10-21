@@ -11,7 +11,7 @@ using namespace std;
 int main(int argc, char* argv[]){
     //create new stack
     Stack<int> test;
-    cout << "Expected Output: false" << endl;
+    cout << "Expected Output: true" << endl;
     cout << "Real Output: " << boolalpha << test.empty() << endl;
     test.push(69);
     test.push(10);

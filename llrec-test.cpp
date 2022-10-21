@@ -111,6 +111,7 @@ int main(int argc, char* argv[])
     cout <<"Filtered list: ";
     print(head2);
     dealloc(head2);
+
     cout << endl;
     return 0;
 
